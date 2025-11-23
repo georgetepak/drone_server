@@ -56,9 +56,10 @@ def predict():
         return jsonify({"error": "Empty filename"}), 400
 
     # Временный файл (может быть .webm, .wav — librosa сам разберётся)
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp:
         file.save(tmp.name)
         tmp_path = tmp.name
+
 
     try:
         # Загружаем через librosa
